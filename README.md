@@ -16,8 +16,8 @@ In this frontend technical test candidates will be presented with an opportunity
     - Amount due
     - Address
 - Redirects
-  - If the payment status is `ACCEPTED` redirect to "Pay Quote" `<DOMAIN>/payin/<UUID>/pay`
-  - If the payment has expired redirect to "Expiry" `<DOMAIN>/payin/<UUID>/expired`
+  - If `quoteStatus: ACCEPTED` redirect to "Pay Quote" `<DOMAIN>/payin/<UUID>/pay`
+  - If `status: EXPIRED` redirect to "Expiry" `<DOMAIN>/payin/<UUID>/expired`
 - Typescript
 - Test coverage optional
 

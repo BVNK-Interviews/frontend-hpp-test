@@ -24,7 +24,8 @@ In this frontend technical test candidates will be presented with an opportunity
 
 ### Resources
 
-<img width="2168" alt="hpp" src="https://github.com/BVNK-Interviews/frontend-hpp-test/assets/132915473/9f896141-6590-4e5b-8438-1c8a77847e40">
+<img width="2306" alt="hpp" src="https://github.com/BVNK-Interviews/frontend-hpp-test/assets/132915473/7be815d2-38d2-44f8-9f06-3a1e7b678af9">
+
 
 Figma: https://www.figma.com/file/5rSrG0uy1ELR1DxxkZPOpK/HPP-Test?type=design&mode=design&t=uNATVIOjHSBlBX2G-1
 

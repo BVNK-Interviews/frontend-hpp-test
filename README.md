@@ -2,49 +2,68 @@
 
 In this frontend technical test candidates will be presented with an opportunity to demonstrate their proficiency in building modern and user-friendly web applications. The test will assess candidates' skills in designing responsive and interactive user interfaces, implementing efficient state management, and handling data retrieval and rendering with API integration. Emphasis will be placed on writing clean and maintainable code, adhering to best practices, and showcasing a deep understanding of React or Next.js frameworks. Candidates will be expected to leverage their knowledge of component-based architecture, routing, and state management techniques to create a seamless and visually appealing user experience.
 
+<img width="2306" alt="hpp" src="https://github.com/BVNK-Interviews/frontend-hpp-test/assets/132915473/7be815d2-38d2-44f8-9f06-3a1e7b678af9">
+
 ## Test 
 - Build a Hosted Payment Page (HPP) app using React or NextJS
 - Routes
   - "Accept Quote": `<DOMAIN>/payin/<UUID>`
   - "Pay Quote": `<DOMAIN>/payin/<UUID>/pay`
   - "Expiry": `<DOMAIN>/payin/<UUID>/expired`
+- "Accept Quote" - This page marks the initial stage of the customer's payment journey. Here, the customer is provided with essential details to review before proceeding. These details include the merchant's name, the payable amount, the reference for the transaction, and the option to choose their preferred currency for payment.
+  - To populate the "Pay with" drop down use - `GET` `https://api.sandbox.bvnk.com/api/currency/crypto?max=20&sort=rank&order=asc&allowDeposits=true`
+  - When the customer selects a currency from the dropdown eg. Bitcoin (BTC) `PUT` `https://api.sandbox.bvnk.com/api/v1/pay/<UUID>/summary`
+    ```
+    {
+      "currency": "BTC",
+      "payInMethod": "crypto"
+    }
+    ```
+  - On success `200` show the "Amount due", "Quoted price expires in", and "Confirm" button. 
+  - When the customer clicks "Confirm" `PUT` `https://api.sandbox.bvnk.com/api/v1/pay/<UUID>/accept/summary`
+    ```
+    {
+      "successUrl": "no_url"
+    }
+    ```
+  - On success `200` redirect to "Pay Quote".
+- "Pay Quote" - Moving forward in the payment journey, we arrive at a pivotal stage. Here, the customer encounters a page titled "Pay with Bitcoin," a short payment summary. Vital information such as the amount due, the BTC address for payment, a convenient QR code, and the remaining time before the quote expires are all prominently presented on this page. 
 - Timers 
-  -  "Accept Quote" should be refreshed every ±18 seconds, use the `acceptanceExpiryDate` to `PUT` `https://api.sandbox.bvnk.com/api/v1/pay/<UUID>/summary` to refresh the quote and UI.
+  -  "Accept Quote" - Once a currency is selected the quote should be refreshed every ±18 seconds, use the `acceptanceExpiryDate` value to determine the . `PUT` `https://api.sandbox.bvnk.com/api/v1/pay/<UUID>/summary` to refresh the quote and UI.
   - "Pay Quote" has an expiry date set by the api, use the `quoteExpiryDate` to add an expiry count down timer.
-- Copy 
-  - "Pay Quote" has 2 fields that should be copied to the clip board when individually clicked
+- Copy to clipboard
+  - "Pay Quote" has 2 fields that should be copied to the clipboard when individually clicked
     - Amount due
     - Address
 - Redirects
   - If `quoteStatus: ACCEPTED` redirect to "Pay Quote" `<DOMAIN>/payin/<UUID>/pay`
   - If `status: EXPIRED` redirect to "Expiry" `<DOMAIN>/payin/<UUID>/expired`
 - Typescript
-- Test coverage optional
+- Test coverage (bonus points)
 
 
-### Resources
+## Resources
 
-<img width="2306" alt="hpp" src="https://github.com/BVNK-Interviews/frontend-hpp-test/assets/132915473/7be815d2-38d2-44f8-9f06-3a1e7b678af9">
+#### Figma 
+https://www.figma.com/file/5rSrG0uy1ELR1DxxkZPOpK/HPP-Test?type=design&mode=design&t=uNATVIOjHSBlBX2G-1
 
-
-Figma: https://www.figma.com/file/5rSrG0uy1ELR1DxxkZPOpK/HPP-Test?type=design&mode=design&t=uNATVIOjHSBlBX2G-1
-
-Postman pack: `Link here`
+#### Postman pack 
+`Link here`
 
 #### Pay In example
 
-`https://api.sandbox.bvnk.com/api/v1/pay/<UUID>/summary`
+`GET` `https://api.sandbox.bvnk.com/api/v1/pay/<UUID>/summary`
 
 ```
 {
-    "uuid": "54574426-c442-4647-8349-e74eb68a6747",
+    "uuid": "fcbacea9-070f-4d69-96ce-db873999c95a",
     "merchantDisplayName": "Merchant Display Name",
     "merchantId": "ab9435fa-16fe-4aa1-be9c-8128ce7e72de",
-    "dateCreated": 1690291623000,
-    "expiryDate": 1690464423000,
-    "quoteExpiryDate": 1690302429000,
-    "acceptanceExpiryDate": 1690291659000,
-    "quoteStatus": "PENDING",
+    "dateCreated": 1690372347000,
+    "expiryDate": 1690545147000,
+    "quoteExpiryDate": null,
+    "acceptanceExpiryDate": null,
+    "quoteStatus": "TEMPLATE",
     "reference": "REF292970",
     "type": "IN",
     "subType": "merchantPayIn",
@@ -60,8 +79,8 @@ Postman pack: `Link here`
         "actual": 0
     },
     "paidCurrency": {
-        "currency": "BTC",
-        "amount": 0.0075759,
+        "currency": null,
+        "amount": 0,
         "actual": 0
     },
     "feeCurrency": {
@@ -69,19 +88,11 @@ Postman pack: `Link here`
         "amount": 0,
         "actual": 0
     },
-    "displayRate": {
-        "base": "BTC",
-        "counter": "EUR",
-        "rate": 26399.503689330642
-    },
-    "exchangeRate": {
-        "base": "BTC",
-        "counter": "EUR",
-        "rate": 26399.5
-    },
+    "displayRate": null,
+    "exchangeRate": null,
     "address": null,
     "returnUrl": "",
-    "redirectUrl": "https://pay.sandbox.bvnk.com/payin?uuid=54574426-c442-4647-8349-e74eb68a6747",
+    "redirectUrl": "https://pay.sandbox.bvnk.com/payin?uuid=fcbacea9-070f-4d69-96ce-db873999c95a",
     "transactions": [],
     "refund": null,
     "refunds": []

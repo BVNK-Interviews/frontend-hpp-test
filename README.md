@@ -5,7 +5,7 @@ In this frontend technical test candidates will be presented with an opportunity
 <img width="2306" alt="hpp" src="https://github.com/BVNK-Interviews/frontend-hpp-test/assets/132915473/7be815d2-38d2-44f8-9f06-3a1e7b678af9">
 
 ## The Test 
-Create a private GitHub repository for your Hosted Payment Page (HPP) application using React or Next.js, TypeScript, and earn bonus points by adding test coverage. Feel free to utilize any CSS frameworks and JavaScript libraries of your choice.
+Create a private GitHub repository for a Hosted Payment Page (HPP) application using React or Next.js, TypeScript, and earn bonus points by adding test coverage. Feel free to utilize any CSS frameworks and JavaScript libraries of your choice.
 
 #### Routes
 - "Accept Quote": `<DOMAIN>/payin/<UUID>`

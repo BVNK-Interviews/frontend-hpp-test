@@ -16,7 +16,9 @@ Create a private GitHub repository for a Hosted Payment Page (HPP) application u
 This page marks the initial stage of the customer's payment journey. Here, the customer is provided with essential details to review before proceeding. These details include the merchant's name, the payable amount, the reference for the transaction, and the option to choose their preferred currency for payment.
   - Onload `GET` `https://api.sandbox.bvnk.com/api/v1/pay/<UUID>/summary`
   - "Pay with" dropdown `GET` `https://api.sandbox.bvnk.com/api/currency/crypto?max=20&sort=rank&order=asc&allowDeposits=true`
-  - When the customer selects a currency from the dropdown eg. Bitcoin (BTC) `PUT` `https://api.sandbox.bvnk.com/api/v1/pay/<UUID>/summary`
+  - When the customer selects a currency from the dropdown eg. Bitcoin (BTC) 
+  
+    `PUT` `https://api.sandbox.bvnk.com/api/v1/pay/<UUID>/summary`
     ```
     {
       "currency": "BTC",
@@ -24,7 +26,9 @@ This page marks the initial stage of the customer's payment journey. Here, the c
     }
     ```
   - On success `200` show the "Amount due", "Quoted price expires in", and "Confirm" button. 
-  - When the customer clicks "Confirm" `PUT` `https://api.sandbox.bvnk.com/api/v1/pay/<UUID>/accept/summary`
+  - When the customer clicks "Confirm" 
+    
+    `PUT` `https://api.sandbox.bvnk.com/api/v1/pay/<UUID>/accept/summary`
     ```
     {
       "successUrl": "no_url"
@@ -40,8 +44,8 @@ Moving forward in the payment journey, we arrive at a pivotal stage. Here, the c
 Should a quote expire, this page will be displayed to the user.
 
 #### Timers 
-1.  "Accept Quote" - Once a currency is selected the quote should be refreshed every ±18 seconds, use the `acceptanceExpiryDate` value to determine when to call the api and `PUT` `https://api.sandbox.bvnk.com/api/v1/pay/<UUID>/summary` to refresh the quote and UI.
-1. "Pay Quote" has an expiry date set by the api, use the `quoteExpiryDate` to add an expiry count down timer.
+1. "Accept Quote" - Once a currency is selected the quote should be refreshed every ±18 seconds, use the `acceptanceExpiryDate` value to determine when to call the api `PUT` `https://api.sandbox.bvnk.com/api/v1/pay/<UUID>/summary` to refresh the quote and UI.
+2. "Pay Quote" has an expiry date set by the api, use the `quoteExpiryDate` to add an expiry count down timer.
 
 #### Copy to clipboard
 "Pay Quote" has 2 fields that should be copied to the clipboard when individually clicked

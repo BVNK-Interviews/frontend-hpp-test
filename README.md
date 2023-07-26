@@ -14,7 +14,8 @@ Create a Hosted Payment Page (HPP) application using React or Next.js, TypeScrip
 
 #### Accept Quote Page
 This page marks the initial stage of the customer's payment journey. Here, the customer is provided with essential details to review before proceeding. These details include the merchant's name, the payable amount, the reference for the transaction, and the option to choose their preferred currency for payment.
-  - To populate the "Pay with" drop down use - `GET` `https://api.sandbox.bvnk.com/api/currency/crypto?max=20&sort=rank&order=asc&allowDeposits=true`
+  - Onload `GET` `https://api.sandbox.bvnk.com/api/v1/pay/<UUID>/summary`
+  - "Pay with" dropdown `GET` `https://api.sandbox.bvnk.com/api/currency/crypto?max=20&sort=rank&order=asc&allowDeposits=true`
   - When the customer selects a currency from the dropdown eg. Bitcoin (BTC) `PUT` `https://api.sandbox.bvnk.com/api/v1/pay/<UUID>/summary`
     ```
     {
@@ -33,6 +34,7 @@ This page marks the initial stage of the customer's payment journey. Here, the c
 
 #### Pay Quote Page
 Moving forward in the payment journey, we arrive at a pivotal stage. Here, the customer encounters a page titled "Pay with Bitcoin," a short payment summary. Vital information such as the amount due, the BTC address for payment, a convenient QR code, and the remaining time before the quote expires are all prominently presented on this page. 
+- Onload `GET` `https://api.sandbox.bvnk.com/api/v1/pay/<UUID>/summary`
 
 #### Expiry Page
 Should a quote expire, this page will be displayed to the user.

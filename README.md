@@ -53,8 +53,8 @@ Should a quote expire, this page will be displayed to the user.
 - Address
 
 #### Redirects
-  - `quoteStatus: ACCEPTED` redirect to "Pay Quote" `<DOMAIN>/payin/<UUID>/pay`
-  - `status: EXPIRED` redirect to "Expiry" `<DOMAIN>/payin/<UUID>/expired`
+  - `quoteStatus: "ACCEPTED"` redirect to Pay Quote `<DOMAIN>/payin/<UUID>/pay`
+  - `status: "EXPIRED"` redirect to Expiry `<DOMAIN>/payin/<UUID>/expired`
 
 
 ## Resources

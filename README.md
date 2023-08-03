@@ -7,16 +7,37 @@ In this frontend technical test candidates will be presented with an opportunity
 ## The Test 
 Create a private GitHub repository for a Hosted Payment Page (HPP) application using React or Next.js, TypeScript, and earn bonus points by adding test coverage. Feel free to utilize any CSS frameworks and JavaScript libraries of your choice.
 
-#### Routes
+#### Postman 
+This repository offers a 'Postman Pack' designed to swiftly generate payments through our sandbox API. It encompasses:
+- Collection - `payments.postman_collection.json`
+- Environment - `sandbox.postman_environment.json`
+
+Import both files into Postman, in the screenshot below make sure the "Create Payment In" is using the "Sandbox" environment:
+
+<img width="917" alt="paymentIn" src="https://github.com/BVNK-Interviews/frontend-hpp-test/assets/132915473/9fc61eb2-fb7c-4f24-be41-fdac6af0875f">
+
+The Collection utilizes predefined Environment variables stored in `sandbox.postman_environment.json` to effortlessly configure the required authentication headers for initiating a payment creation process. Simply click 'Send' and upon a successful response, a new payment will be generated. The response payload will contain a `uuid` and the necessary data for your application development.
+
+Kindly be aware that after accepting or upon the expiration of a quote, you will need to generate a fresh payment to validate your application's steps.
+
+#### Setup
+- The application should run on `https://localhost:3000`. 
+- Please provide steps in the README to run the application. 
+
+#### Application Routes
 - "Accept Quote": `<DOMAIN>/payin/<UUID>`
 - "Pay Quote": `<DOMAIN>/payin/<UUID>/pay`
 - "Expiry": `<DOMAIN>/payin/<UUID>/expired`
 
 #### Accept Quote Page
 This page marks the initial stage of the customer's payment journey. Here, the customer is provided with essential details to review before proceeding. These details include the merchant's name, the payable amount, the reference for the transaction, and the option to choose their preferred currency for payment.
-  - Onload `GET` `https://api.sandbox.bvnk.com/api/v1/pay/<UUID>/summary`
-  - "Pay with" dropdown `GET` `https://api.sandbox.bvnk.com/api/currency/crypto?max=20&sort=rank&order=asc&allowDeposits=true`
-  - When the customer selects a currency from the dropdown eg. Bitcoin (BTC) 
+  - Onload: 
+
+    `GET` `https://api.sandbox.bvnk.com/api/v1/pay/<UUID>/summary`
+  - "Pay with" dropdown: 
+    
+    `GET` `https://api.sandbox.bvnk.com/api/currency/crypto?max=20&sort=rank&order=asc&allowDeposits=true`
+  - When the customer selects a currency from the dropdown eg. Bitcoin (BTC):
   
     `PUT` `https://api.sandbox.bvnk.com/api/v1/pay/<UUID>/summary`
     ```
@@ -62,10 +83,11 @@ Should a quote expire, this page will be displayed to the user.
 #### Figma 
 https://www.figma.com/file/5rSrG0uy1ELR1DxxkZPOpK/HPP-Test?type=design&mode=design&t=uNATVIOjHSBlBX2G-1
 
-#### Postman pack 
-`Link here`
+#### Postman
 
-#### Pay In API examples
+
+
+#### Pay In example responses
 
 `GET` `https://api.sandbox.bvnk.com/api/v1/pay/<UUID>/summary`
 

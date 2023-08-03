@@ -47,7 +47,7 @@ This page marks the initial stage of the customer's payment journey. Here, the c
     }
     ```
   - On success `200` show the "Amount due", "Quoted price expires in", and "Confirm" button. 
-  - When the customer clicks "Confirm" 
+  - When the customer clicks "Confirm":
     
     `PUT` `https://api.sandbox.bvnk.com/api/v1/pay/<UUID>/accept/summary`
     ```
@@ -59,7 +59,9 @@ This page marks the initial stage of the customer's payment journey. Here, the c
 
 #### Pay Quote Page
 Moving forward in the payment journey, we arrive at a pivotal stage. Here, the customer encounters a page titled "Pay with Bitcoin," a short payment summary. Vital information such as the amount due, the BTC address for payment, a convenient QR code, and the remaining time before the quote expires are all prominently presented on this page. 
-- Onload `GET` `https://api.sandbox.bvnk.com/api/v1/pay/<UUID>/summary`
+- Onload: 
+
+  `GET` `https://api.sandbox.bvnk.com/api/v1/pay/<UUID>/summary`
 
 #### Expiry Page
 Should a quote expire, this page will be displayed to the user.

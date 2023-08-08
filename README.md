@@ -47,7 +47,10 @@ This page marks the initial stage of the customer's payment journey. Here, the c
       "payInMethod": "crypto"
     }
     ```
-  - On success `200` show the "Amount due", "Quoted price expires in", and "Confirm" button. 
+  - On API success `200`:
+    - Show the "Amount due" (payload: `paidCurrency.amount` and `paidCurrency.currency`)
+    - "Quoted price expires in" (payload: `acceptanceExpiryDate`)
+    - "Confirm" button. 
   - When the customer clicks "Confirm":
     
     `PUT` `https://api.sandbox.bvnk.com/api/v1/pay/<UUID>/accept/summary`
@@ -64,17 +67,21 @@ Moving forward in the payment journey, we arrive at a pivotal stage. Here, the c
 
   `GET` `https://api.sandbox.bvnk.com/api/v1/pay/<UUID>/summary`
 
+- "Amount due" (payload: `paidCurrency.amount` and `paidCurrency.currency`)
+- "Crypto Address" (payload: `address.address`)
+- "Time left to pay" (payload: `expiryDate`)
+
 #### Expiry Page
 Should a quote expire, this page will be displayed to the user.
 
 #### Timers 
 1. "Accept Quote" - Once a currency is selected the quote should be refreshed every ±30 seconds, use the `acceptanceExpiryDate` value to determine when to call the api `PUT` `https://api.sandbox.bvnk.com/api/v1/pay/<UUID>/summary` to refresh the quote and UI.
-2. "Pay Quote" has an expiry date set by the api, use the `quoteExpiryDate` to add an expiry count down timer.
+2. "Pay Quote" has an expiry date set by the api, use the `expiryDate` to add an expiry count down timer.
 
 #### Copy to clipboard
 "Pay Quote" has 2 fields that should be copied to the clipboard when individually clicked
-- Amount due
-- Address
+- Amount due (payload: `paidCurrency.amount`)
+- Address (payload: `address.address`)
 
 #### Redirects
   - `quoteStatus: "ACCEPTED"` redirect to Pay Quote `<DOMAIN>/payin/<UUID>/pay`

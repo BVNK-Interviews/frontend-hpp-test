@@ -34,9 +34,10 @@ This page marks the initial stage of the customer's payment journey. Here, the c
   - Onload: 
 
     `GET` `https://api.sandbox.bvnk.com/api/v1/pay/<UUID>/summary`
-  - "Pay with" dropdown: 
-    
-    `GET` `https://api.sandbox.bvnk.com/api/currency/crypto?max=20&sort=rank&order=asc&allowDeposits=true`
+  - "Pay with" dropdown currencies:
+    - Bitcoin `BTC`
+    - Ethereum `ETH`
+    - Litecoin `LTC`
   - When the customer selects a currency from the dropdown eg. Bitcoin (BTC):
   
     `PUT` `https://api.sandbox.bvnk.com/api/v1/pay/<UUID>/summary`

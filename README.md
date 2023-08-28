@@ -50,7 +50,7 @@ This page marks the initial stage of the customer's payment journey. Here, the c
     - Litecoin `LTC`
   - When the customer selects a currency from the dropdown eg. Bitcoin (BTC):
   
-    `PUT` `https://api.sandbox.bvnk.com/api/v1/pay/<UUID>/summary`
+    `PUT` `https://api.sandbox.bvnk.com/api/v1/pay/<UUID>/update/summary`
     ```
     {
       "currency": "BTC",

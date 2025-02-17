@@ -4,7 +4,7 @@
 		"name": "Payments",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "24542859",
-		"_collection_link": "https://www.postman.com/coindirect/workspace/bvnk-frontend-test/collection/24542859-79f21b7d-7b1a-4de7-a902-6f5e05650e61?action=share&creator=24542859&source=collection_link"
+		"_collection_link": "https://www.postman.com/coindirect/workspace/bvnk-frontend-test/collection/24542859-79f21b7d-7b1a-4de7-a902-6f5e05650e61?action=share&source=collection_link&creator=24542859"
 	},
 	"item": [
 		{
@@ -27,7 +27,8 @@
 							"",
 							"pm.environment.set(\"generate_reference\", reference)"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -36,7 +37,8 @@
 						"exec": [
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -48,7 +50,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"merchantId\": \"{{merchant_id}}\",\n    \"type\": \"IN\",\n    \"amount\": 200,\n    \"currency\": \"ZAR\",\n    \"expiryMinutes\": 30,\n    \"reference\": \"{{generate_reference}}\"\n}\n\n\n",
+					"raw": "{\n    \"merchantId\": \"fb140b88-7296-4397-bd9e-47b29a4805ee\",\n    \"type\": \"IN\",\n    \"amount\": 200,\n    \"currency\": \"ZAR\",\n    \"expiryMinutes\": 1,\n    \"reference\": \"{{generate_reference}}\",\n    \"customerId\": \"123\",\n    \"complianceDetails\": {\n        \"requesterIpAddress\": \"127.0.0.1\",\n        \"partyDetails\": [\n            {\n                \"type\": \"ORIGINATOR\",\n                \"entityType\": \"INDIVIDUAL\",\n                \"relationshipType\": \"SELF_OWNED\",\n                \"firstName\": \"firstName\",\n                \"middleName\": \"middleName\",\n                \"lastName\": \"lastName\",\n                \"dateOfBirth\": \"1983-03-28\"\n            }\n        ]\n    }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -69,6 +71,38 @@
 						"v1",
 						"pay",
 						"summary"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Channel",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n     \"merchantId\": \"fb140b88-7296-4397-bd9e-47b29a4805ee\",\n     \"payCurrency\": \"ETH\",\n     \"displayCurrency\": \"JPY\",\n     \"reference\": \"TestChannel\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.sandbox.bvnk.com/api/v2/channel",
+					"protocol": "https",
+					"host": [
+						"api",
+						"sandbox",
+						"bvnk",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"channel"
 					]
 				}
 			},

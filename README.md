@@ -15,7 +15,7 @@ In this frontend technical test candidates will be presented with an opportunity
 </div>
 
 ## The Test 
-Create a **Private** GitHub repository for a Hosted Payment Page (HPP) application using React or Next.js, TypeScript, and earn bonus points by adding test coverage. Feel free to utilize any CSS frameworks and JavaScript libraries of your choice.
+Create a **Public** GitHub repository for a Hosted Payment Page (HPP) application using React or Next.js, TypeScript, and earn bonus points by adding test coverage. Feel free to utilize any CSS frameworks and JavaScript libraries of your choice.
 
 #### Postman 
 This repository offers a 'Postman Pack' designed to swiftly generate payments through our sandbox API. It encompasses:

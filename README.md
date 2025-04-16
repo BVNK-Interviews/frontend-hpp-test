@@ -156,7 +156,7 @@ https://www.figma.com/file/5rSrG0uy1ELR1DxxkZPOpK/HPP-Test?type=design&mode=desi
 }
 ```
 
-`PUT` `https://api.sandbox.bvnk.com/api/v1/pay/<UUID>/summary`
+`PUT` `https://api.sandbox.bvnk.com/api/v1/pay/<UUID>/accept/summary`
 
 ```
 {
